@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:59:04 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/23 16:49:12 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:11:06 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,12 +144,15 @@ int	*ft_stack_to_tab(t_stack *a, int	*tab, char sign)
 	}
 	if (sign == '+')
 		tab[0] = a->first;
-	while (i <= a->len)
+	while (i + 1 < a->len)
 	{
-		tab[i] = a->stack[i - 1];
+		tab[i] = a->stack[i];
+		printf("iterations %d\n", i);
+		printf("%d\n", tab[i]);
 		i++;
 	}
 	free(a->stack);
+	printf("out\n");
 	return (tab);
 }
 
@@ -166,14 +169,21 @@ int	*ft_malloc_stack(t_stack *b, int *tab, int i)
 		exit(EXIT_FAILURE);
 	}
 	if (i != 0)
+	{
 		b->stack[0] = b->first;
+		printf("iterations %d\n", 1);
+		printf("%d\n", b->stack[0]);
+	}
 	while (tab[j])
 	{
 		b->stack[i] = tab[j];
+		printf("iterations %d\n", i);
+		printf("%d\n", b->stack[i]);
 		i++;
 		j++;
 	}
 	free(tab);
+	printf("out\n");
 	return (b->stack);
 }
 
@@ -236,12 +246,14 @@ int	main(void)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		i;
 
+	i = 0;
 	b = NULL;
 	a = NULL;
 	a = malloc(sizeof(t_stack));
 	a->stack = malloc(sizeof(int) * 3);
-	a->stack[0] = 1;
+	a->stack[0] = 2;
 	a->stack[1] = 5;
 	a->stack[2] = 67;
 	b = malloc(sizeof(t_stack));
@@ -251,16 +263,33 @@ int	main(void)
 	b->stack[2] = 7;
 	a->len = 3;
 	b->len = 3;
-	a->first = 1;
+	a->first = 2;
 	b->first = 13;
 	a->last = 67;
 	b->last = 7;
-	a->min = 1;
+	a->min = 2;
 	a->max = 67;
 	b->min = 7;
 	b->max = 51;
-	ft_push(a,b);
-	printf("%d%s%d", a->stack[1], "\n", b->stack[1]);
-
-	return(0);
+	ft_push(a, b);
+	printf("end of program\nFinal tabs look like this : \nStack a : \n");
+	while (i < a->len)
+	{
+		printf("%d\n", a->stack[i]);
+		i++;
+	}
+	printf("stack b: \n");
+	i = 0;
+	while (i < b->len)
+	{
+		printf("%d\n", b->stack[i]);
+		i++;
+	}
+	return (0);
 }
+
+// visiblement push ne fonctionne pas comme prevu, penser a mettre
+// des printf un peu partout pour voir les valeurs des stacks
+// mais aussi de first, last, max, min et len
+// Courage André !!!!Nique les listes chainées!!
+// si ca crashe pas, c'est que c'est reparable!!
