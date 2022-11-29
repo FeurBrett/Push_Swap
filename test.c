@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:59:04 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/24 14:11:06 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:45:42 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,9 @@ int	*ft_stack_to_tab(t_stack *a, int	*tab, char sign)
 {
 	printf("%s", "stacktotab\n");
 	int	i;
+	int	j;
 
+	j = 0;
 	i = 0;
 	tab = malloc(sizeof(int) * a->len);
 	if (!tab)
@@ -143,11 +145,11 @@ int	*ft_stack_to_tab(t_stack *a, int	*tab, char sign)
 		exit(EXIT_FAILURE);
 	}
 	if (sign == '+')
-		tab[0] = a->first;
+		tab[j++] = a->first;
 	while (i + 1 < a->len)
 	{
-		tab[i] = a->stack[i];
-		printf("iterations %d\n", i);
+		tab[j++] = a->stack[i];
+		printf("iterations %d stack [%d] tab [%d]\n", i, a->stack[i], tab[i]);
 		printf("%d\n", tab[i]);
 		i++;
 	}
@@ -156,35 +158,57 @@ int	*ft_stack_to_tab(t_stack *a, int	*tab, char sign)
 	return (tab);
 }
 
-int	*ft_malloc_stack(t_stack *b, int *tab, int i)
-{
-	printf("%s", "mallocstack\n");
-	int	j;
+ // int	*ft_malloc_stack(t_stack *b, int *tab, int i)
+// {
+// 	printf("%s", "mallocstack\n");
+// 	int	j;
 
-	j = 0;
-	b->stack = malloc(sizeof(int) * b->len);
-	if (!b->stack)
+// 	j = 0;
+// 	b->stack = malloc(sizeof(int) * b->len);
+// 	if (!b->stack)
+// 	{
+// 		write(1, "Error\n", 6);
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	if (i != 0)
+// 	{
+// 		b->stack[0] = b->first;
+// 		printf("iterations %d\n", 1);
+// 		printf("%d\n", b->stack[0]);
+// 	}
+// 	while (tab[j])
+// 	{
+// 		b->stack[i] = tab[j];
+// 		printf("iterations %d\n", i);
+// 		printf("%d\n", b->stack[i]);
+// 		i++;
+// 		j++;
+// 	}
+// 	free(tab);
+// 	printf("out\n");
+// 	return (b->stack);
+// }
+
+int	*ft_get_pushed(t_stack *a, int *tab)
+{
+	int	i;
+
+	i = 0;
+	tab = malloc(sizeof(int) * a->len);
+	if (!tab)
 	{
-		write(1, "Error\n", 6);
+		write(1, "Error", 6);
 		exit(EXIT_FAILURE);
 	}
-	if (i != 0)
+	while (i < a->len +1)
 	{
-		b->stack[0] = b->first;
-		printf("iterations %d\n", 1);
-		printf("%d\n", b->stack[0]);
-	}
-	while (tab[j])
-	{
-		b->stack[i] = tab[j];
 		printf("iterations %d\n", i);
-		printf("%d\n", b->stack[i]);
+ 		printf("%d\n", a->stack[i]);
+		tab[i] = a->stack[i + 1];
 		i++;
-		j++;
 	}
-	free(tab);
-	printf("out\n");
-	return (b->stack);
+	free(a->stack);
+	return (tab);
 }
 
 int	ft_max(int *a)
@@ -229,9 +253,15 @@ void	ft_push(t_stack *a, t_stack *b)
 	a->len = a->len - 1;
 	b->len = b->len + 1;
 	tab = ft_stack_to_tab(b, tab, '+');
-	b->stack = ft_malloc_stack(b, tab, 0);
-	tab = ft_stack_to_tab(a, tab, '0');
-	a->stack = ft_malloc_stack(b, tab, 1);
+	//b->stack = ft_malloc_stack(b, tab, 0);
+	b->stack = tab;
+	free(tab);
+	tab = ft_get_pushed(a, tab);
+	//tab = ft_stack_to_tab(a, tab, '-');
+	//tab = ft_stack_to_tab(a, tab, '0');
+	//a->stack = ft_malloc_stack(b, tab, 1);
+	a->stack = tab;
+	free(tab);
 	if (a->first == a->max)
 		a->max = ft_max(a->stack);
 	if (a->first == a->min)

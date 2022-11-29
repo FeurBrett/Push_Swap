@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:15:37 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/22 15:21:08 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:19:06 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	ft_check_dbl(int *a, int b)
 	while (i < b)
 	{
 		j = 0;
-		write(1, "boucle1\n", 8);
+//		write(1, "boucle1\n", 8);
 		while (j != i)
 		{
-			write(1, "boucle2\n", 8);
+//			write(1, "boucle2\n", 8);
 			if (a[i] == a[j])
 			{
-				write(1, "Error, same argument passed twice\n", 34);
+				write(1, "Error\n", 6);
 				exit(EXIT_FAILURE);
 			}
 			j++;
@@ -119,5 +119,4 @@ t_stack	ft_tab_to_stack(int *a, int i)
 		i++;
 	}
 	return (stack1);
-
 }

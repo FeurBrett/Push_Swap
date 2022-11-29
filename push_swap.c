@@ -6,13 +6,13 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:07:00 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/22 15:21:36 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:56:47 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_algo(int *liste_a, int i)
+int	ft_algo()
 {
 
 }
@@ -24,16 +24,20 @@ int	main(int argc, const char **argv)
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = -1;
 	tab = malloc(sizeof(char) * (argc - 1));
 	if (!tab)
 		return (0);
 	if (argc >= 2)
 	{
-		while (argv[i])
+		while (argv[++i])
 			tab[i] = ft_split(argv[1]);
-			i++;
+// FAUT ABSOLUMENT RETEST CA ET VOIR SI CA MARCHE
+// !!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!
 	}
+	else
+		return (0);
 	i = 0;
 	while (tab[i])
 	{
@@ -47,7 +51,7 @@ int	main(int argc, const char **argv)
 int	ft_push_swap(char **a, int i)
 {
 	int		*tab;
-	t_stack	stack1;
+	t_stack	*stack1;
 
 	while (a[i])
 		i++;
@@ -57,6 +61,11 @@ int	ft_push_swap(char **a, int i)
 	i = 0;
 	while (a[i])
 		tab[i] = ft_atoi(a[i]);
+	if (ft_check_dbl(tab, i) != 1)
+	{
+		write(1, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
 	stack1 = ft_tab_to_stack(tab, i);
 	ft_algo(stack1, 0);
 }

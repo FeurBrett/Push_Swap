@@ -1,27 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_functions.c                                  :+:      :+:    :+:   */
+/*   ft_calculs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 18:20:27 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/29 14:51:52 by apirovan         ###   ########.fr       */
+/*   Created: 2022/11/29 13:56:20 by apirovan          #+#    #+#             */
+/*   Updated: 2022/11/29 13:57:37 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char a)
-{
-	if (a < '0' || a > '9')
-		return (0);
-	else
-		return (1);
-}
+#include "push_swap.h"
 
-int	ft_isminus(char a)
-{
-	if (a != '-' && a != '+')
-		return (0);
-	else
-		return (1);
-}
