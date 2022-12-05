@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:15:37 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 14:01:48 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:18:16 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	check_args(char **tab, int i)
 
 	while (tab[i])
 	{
-		printf("%s\n", tab[i]);
 		ft_check_error(tab[i]);
 		j = 0;
 		k = 0;

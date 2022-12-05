@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:25:10 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 12:04:35 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:54:36 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,11 @@ int		ft_push_swap(char **a, int i);
 int		ft_atoi(char *str);
 t_stack	*ft_tab_to_stack(int *a, int i);
 int		ft_len_array(char **tab);
+char	*ft_strdup(const char *src);
+
+// Les mouvements
+
+void	ft_rotate(t_stack *a);
+void	ft_rev_rotate(t_stack *a);
 
 #endif

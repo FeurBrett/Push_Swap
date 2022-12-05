@@ -6,17 +6,21 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:07:00 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 12:27:08 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:24:06 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-// int	ft_algo()
-// {
+int	ft_algo(t_stack *a, int i)
+{
+	t_stack	*b;
 
-// }
+	b = malloc(sizeof(t_stack));
+	if (a->len == 3)
+		if_three(a, b);
+}
 
 int	main(int argc, const char **argv)
 {
@@ -35,49 +39,28 @@ int	main(int argc, const char **argv)
 			return (1);
 		while (i < argc - 1)
 		{
-			printf("%s\n", argv[i + 1]);
-			tab[i] = strdup(argv[i + 1]);
+			tab[i] = ft_strdup(argv[i + 1]);
 			i++;
 		}
 	}
 	else
 		tab = ft_split(argv[1], ' ');
-// bien enlever ce truc avec le j avant la correction la fdp
-	printf("%d\n", ft_len_array((char **)tab));
-	int	j = 0;
-	while (j < argc - 1)
-	{
-		printf("[%s]\n", tab[j]);
-		j++;
-	}
 	if (check_args(tab, 0) == 1)
-	{
-		write (1, "check done\n", 11);
-		// jusqu'ici ca va, verifie le push_swap mtn
 		ft_push_swap(tab, 0);
-		write(1, "hop\n", 4);
-	}
 	return (1);
 }
 
-// met des petits write toussa toussa bg
 int	ft_push_swap(char **a, int i)
 {
 	int		*tab;
 	t_stack	*stack1;
 
 	while (i < ft_len_array(a))
-	{
-		printf("a[i] = %s %d\n", a[i], i);
 		i++;
-	}
-	printf ("i = %d\n", i);
 	tab = malloc(sizeof(int) * i);
-	printf ("malloc done\n");
 	if (!tab)
 		exit(EXIT_FAILURE);
 	i = 0;
-	printf ("i remis a 0 \n");
 	while (i < ft_len_array(a))
 	{
 		printf ("iterations : [%d]\n", i);
@@ -94,11 +77,9 @@ int	ft_push_swap(char **a, int i)
 		exit(EXIT_FAILURE);
 	}
 	write (1, "check done.\n", 12);
-	//printf("len i = %d", i);
 	stack1 = ft_tab_to_stack(tab, i);
 	i = 0;
-//	ft_algo(stack1, 0);
-	write(1, "fin", 3);
+	ft_algo(stack1, 0);
 	return (0);
 }
 // Lorsque tu reçois tes arguments
