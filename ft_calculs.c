@@ -6,9 +6,23 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:56:20 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/29 13:57:37 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/02 14:51:27 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	if_three
+{
+
+}
+
+int	if_five
+{
+
+}
+
+int	if_more
+{
+	
+}

@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_functions.c                                  :+:      :+:    :+:   */
+/*   test2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 18:20:27 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 14:02:25 by apirovan         ###   ########.fr       */
+/*   Created: 2022/12/02 14:19:59 by apirovan          #+#    #+#             */
+/*   Updated: 2022/12/02 15:38:34 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-int	ft_isdigit(char a)
+int	main(int argc, const char **argv)
 {
-	if (a < '0' || a > '9')
-		return (0);
-	else
-		return (1);
-}
-
-int	ft_isminus(char a)
-{
-	if (a != '-' && a != '+')
-		return (0);
-	else
-		return (1);
-}
-
-int ft_len_array(char **tab)
-{
-	int	i;
+	t_stack	a;
+	t_stack	b;
+	int		i;
+	char	**tab;
 
 	i = 0;
-	if (!tab)
+	printf(">>%d\n", argc);
+	if (argc == 1)
 		return (0);
-	while ((char *)(tab)[i] != NULL)
-		i++;
-	return (i);
+	if (argc > 2)
+	{
+		tab = malloc(sizeof(char) * (argc - 1));
+		if (!tab)
+			return (1);
+		while (i < argc - 1)
+		{
+			tab[i] = (char*)argv[i + 1];
+			printf(" a [%s]\n", tab[i]);
+			i++;
+		}
+	}
+	i = 0;
+	if (check_args(tab, 0) == 1)
+	{
+		// ft_push_swap(tab, 0);
+		write(1, "yay\n", 4);
+	}
+	return (1);
 }

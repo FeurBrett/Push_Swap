@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:15:37 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/29 15:19:06 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:01:48 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	check_args(char **tab, int i)
 
 	while (tab[i])
 	{
+		printf("%s\n", tab[i]);
 		ft_check_error(tab[i]);
 		j = 0;
 		k = 0;
@@ -32,7 +33,10 @@ int	check_args(char **tab, int i)
 			if (ft_isdigit(tab[i][j]) == 1)
 				j++;
 			else
-				return (0);
+			{
+				write(1, "Error\n", 6);
+				exit(EXIT_FAILURE);
+			}
 		}
 		i++;
 	}
@@ -99,23 +103,25 @@ int	ft_atoi(char *str)
 	return (nb * minus);
 }
 
-t_stack	ft_tab_to_stack(int *a, int i)
+t_stack	*ft_tab_to_stack(int *a, int i)
 {
-	t_stack	stack1;
+	t_stack	*stack1;
 
-	stack1.stack = a;
-	stack1.len = i;
-	stack1.first = stack1.stack[0];
-	stack1.last = stack1.stack[i];
+	stack1 = malloc(sizeof(t_stack));
+	stack1->len = i;
+	stack1->stack = malloc(sizeof(int) * i);
+	stack1->stack = a;
+	stack1->first = stack1->stack[0];
+	stack1->last = stack1->stack[i - 1];
 	i = 0;
-	stack1.max = -2147483648;
-	stack1.min = 2147483647;
-	while (stack1.stack[i])
+	stack1->max = -2147483648;
+	stack1->min = 2147483647;
+	while (i < stack1->len)
 	{
-		if (stack1.stack[i] < stack1.min)
-			stack1.min = stack1.stack[i];
-		if (stack1.stack[i] > stack1.max)
-			stack1.max = stack1.stack[i];
+		if (stack1->stack[i] < stack1->min)
+			stack1->min = stack1->stack[i];
+		if (stack1->stack[i] > stack1->max)
+			stack1->max = stack1->stack[i];
 		i++;
 	}
 	return (stack1);
