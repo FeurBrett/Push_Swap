@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:07:00 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/09 11:09:59 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:26:21 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,28 @@
 int	ft_algo(t_stack *a, int i)
 {
 	t_stack	*b;
+	t_stack	*c;
 
 	b = malloc(sizeof(t_stack));
-	if (a->len == 3)
+	c = malloc(sizeof(t_stack));
+	if (a->len == 2)
+	{
+		if (a->stack[0] < a->stack[1])
+			return (0);
+		else
+		{
+			ft_swap(a);
+			a->last = a->stack[1];
+		}
+	}
+	else if (a->len == 3)
 		if_three(a, b);
+	else
+	{
+		ft_push(a, b);
+		ft_push(a, b);
+		ft_more(a, b, c, i);
+	}
 	return (0);
 }
 
@@ -84,6 +102,7 @@ int	ft_push_swap(char **a, int i)
 		printf("[%d]\n", stack1->stack[i]);
 		i++;
 	}
+	printf ("len : [%d]\n max : [%d]\n min : [%d]\n first : [%d]\n last : [%d]\n", stack1->len, stack1->max, stack1->min, stack1->first, stack1->last);
 	return (0);
 }
 // Lorsque tu reçois tes arguments

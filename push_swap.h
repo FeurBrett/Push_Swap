@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:25:10 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/09 11:03:18 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:01:46 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	ft_rra(t_stack *a, t_stack *b);
 
 void	if_three(t_stack *a, t_stack *b);
 void	ft_three(t_stack *a, t_stack *b);
+void	ft_more(t_stack *a, t_stack *b, t_stack	*c, int i);
 
 #endif
