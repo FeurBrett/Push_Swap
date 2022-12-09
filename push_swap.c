@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:07:00 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 15:24:06 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/09 11:09:59 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ int	ft_algo(t_stack *a, int i)
 	b = malloc(sizeof(t_stack));
 	if (a->len == 3)
 		if_three(a, b);
+	return (0);
 }
 
 int	main(int argc, const char **argv)
 {
-	t_stack	a;
-	t_stack	b;
 	int		i;
 	char	**tab;
 
@@ -80,6 +79,11 @@ int	ft_push_swap(char **a, int i)
 	stack1 = ft_tab_to_stack(tab, i);
 	i = 0;
 	ft_algo(stack1, 0);
+	while (i < stack1->len)
+	{
+		printf("[%d]\n", stack1->stack[i]);
+		i++;
+	}
 	return (0);
 }
 // Lorsque tu reçois tes arguments
