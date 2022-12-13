@@ -6,15 +6,14 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:15:37 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 14:18:16 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:39:06 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_args(char **tab, int i)
+int	check_args(char **tab, int i, int j)
 {
-	int	j;
 	int	k;
 
 	while (tab[i])

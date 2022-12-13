@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:08:24 by apirovan          #+#    #+#             */
-/*   Updated: 2022/11/29 15:49:27 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/13 10:16:13 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	ft_swap(t_stack *a)
 	a->stack[1] = a->first;
 	a->first = a->stack[0];
 }
-
-
 
 // #include <stdio.h>
 

@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:40:49 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/09 12:07:55 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:43:02 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	*new_tab(t_stack *a, int b, int new_len)
 	i = -1;
 	j = 0;
 	tab = malloc(sizeof(int) * new_len);
+	if (!a)
+		exit(EXIT_FAILURE);
 	if (a->len < new_len)
 		tab[j++] = b;
 	else
@@ -64,11 +66,11 @@ int	*new_tab(t_stack *a, int b, int new_len)
 		else
 			tab[j++] = a->stack[i];
 	}
-	free(a->stack);
+//	free(a->stack);
 	return (tab);
 }
 
-void	ft_push(t_stack *a, t_stack *b)
+void	ft_push(t_stack *a, t_stack *b, char x)
 {
 	int	*tab;
 	int	i;
@@ -77,8 +79,10 @@ void	ft_push(t_stack *a, t_stack *b)
 	b->first = a->first;
 	a->first = a->stack[1];
 	b->stack = new_tab(b, a->stack[0], b->len + 1);
+	// free (tab);
 	b->len++;
 	a->stack = new_tab(a, 0, a->len - 1);
+	// free (tab);
 	a->len--;
 	if (a->first == a->max)
 		a->max = ft_max(a->stack);
@@ -88,8 +92,22 @@ void	ft_push(t_stack *a, t_stack *b)
 		b->max = b->first;
 	if (b->first <= b->min)
 		b->min = b->first;
+	write (1, "p", 1);
+	write (1, &x, 1);
+	write (1, "\n", 1);
 }
 
+void	ft_push_back(t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = 0;
+	while (i < b->len + 1)
+	{
+		ft_push(b, a, 'a');
+		i++;
+	}
+}
 // void display(int *tab, int len)
 // {
 //    int i = -1;

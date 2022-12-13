@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:07:00 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/09 18:26:21 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:43:32 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int	ft_algo(t_stack *a, int i)
 {
 	t_stack	*b;
-	t_stack	*c;
+	t_var	*d;
 
 	b = malloc(sizeof(t_stack));
-	c = malloc(sizeof(t_stack));
+	d = malloc(sizeof(t_var));
 	if (a->len == 2)
 	{
 		if (a->stack[0] < a->stack[1])
@@ -31,12 +31,13 @@ int	ft_algo(t_stack *a, int i)
 		}
 	}
 	else if (a->len == 3)
-		if_three(a, b);
+		if_three(a);
 	else
 	{
-		ft_push(a, b);
-		ft_push(a, b);
-		ft_more(a, b, c, i);
+		ft_push(a, b, 'b');
+		ft_push(a, b, 'b');
+		write (1, "starting algorithm \n", 20);
+		ft_more(a, b, d);
 	}
 	return (0);
 }
@@ -62,7 +63,7 @@ int	main(int argc, const char **argv)
 	}
 	else
 		tab = ft_split(argv[1], ' ');
-	if (check_args(tab, 0) == 1)
+	if (check_args(tab, 0, 0) == 1)
 		ft_push_swap(tab, 0);
 	return (1);
 }
@@ -80,10 +81,8 @@ int	ft_push_swap(char **a, int i)
 	i = 0;
 	while (i < ft_len_array(a))
 	{
-		printf ("iterations : [%d]\n", i);
-		printf ("a[i] = %s\n", a[i]);
 		tab[i] = ft_atoi(a[i]);
-		printf ("atoi : [%d]\n", tab[i]);
+		printf ("atoi [%d]: [%d]\n", i + 1, tab[i]);
 		i++;
 	}
 	free(a);
@@ -93,7 +92,6 @@ int	ft_push_swap(char **a, int i)
 		write(1, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	write (1, "check done.\n", 12);
 	stack1 = ft_tab_to_stack(tab, i);
 	i = 0;
 	ft_algo(stack1, 0);
@@ -102,7 +100,7 @@ int	ft_push_swap(char **a, int i)
 		printf("[%d]\n", stack1->stack[i]);
 		i++;
 	}
-	printf ("len : [%d]\n max : [%d]\n min : [%d]\n first : [%d]\n last : [%d]\n", stack1->len, stack1->max, stack1->min, stack1->first, stack1->last);
+	printf ("len : [%d]\nmax : [%d]\nmin : [%d]\nfirst : [%d]\nlast : [%d]\n", stack1->len, stack1->max, stack1->min, stack1->first, stack1->last);
 	return (0);
 }
 // Lorsque tu reçois tes arguments
