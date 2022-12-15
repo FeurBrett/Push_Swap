@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 12:09:07 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/13 18:28:00 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:28:11 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,37 @@ void	ft_rev_rotate(t_stack *a)
 
 void	ft_rr(t_stack *a, t_stack *b)
 {
+	int i = -1;
+	printf ("stacks before rr\na\n");
+	while (i++ < a->len - 1)
+		printf("[%d]", a->stack[i]);
+	i = -1;
+	printf("\nb\n");
+	while (i++ < b->len - 1)
+		printf("[%d]", b->stack[i]);
 	ft_rotate(a);
 	ft_rotate(b);
+	i = -1;
+	printf ("stacks after rr\na\n");
+	while (i++ < a->len - 1)
+		printf("[%d]", a->stack[i]);
+	i = -1;
+	printf("\nb\n");
+	while (i++ < b->len - 1)
+		printf("[%d]", b->stack[i]);
 }
 
 void	ft_rra(t_stack *a, t_stack *b)
 {
 	ft_rev_rotate(a);
 	ft_rev_rotate(b);
+	int i = -1;
+	printf ("stacks after rrr\na\n");
+	while (i++ <= a->len)
+		printf("[%d]", a->stack[i]);
+	i = -1;
+	while (i++ <= b->len)
+		printf("\nb\n[%d]", b->stack[i]);
 }
 
 // #include <stdio.h>

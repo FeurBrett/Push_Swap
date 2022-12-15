@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:40:49 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/13 18:43:02 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:36:58 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	*new_tab(t_stack *a, int b, int new_len)
 
 	i = -1;
 	j = 0;
-	tab = malloc(sizeof(int) * new_len);
+	tab = malloc(sizeof(int) * a->len);
 	if (!a)
 		exit(EXIT_FAILURE);
 	if (a->len < new_len)
@@ -66,6 +66,7 @@ int	*new_tab(t_stack *a, int b, int new_len)
 		else
 			tab[j++] = a->stack[i];
 	}
+	a->len = new_len;
 //	free(a->stack);
 	return (tab);
 }
@@ -80,18 +81,22 @@ void	ft_push(t_stack *a, t_stack *b, char x)
 	a->first = a->stack[1];
 	b->stack = new_tab(b, a->stack[0], b->len + 1);
 	// free (tab);
-	b->len++;
+	// b->len++;
 	a->stack = new_tab(a, 0, a->len - 1);
 	// free (tab);
-	a->len--;
-	if (a->first == a->max)
-		a->max = ft_max(a->stack);
-	if (a->first == a->min)
-		a->min = ft_min(a->stack);
-	if (b->first >= b->max)
-		b->max = b->first;
-	if (b->first <= b->min)
-		b->min = b->first;
+	// a->len--;
+	a->min = ft_min(a->stack);
+	b->min = ft_min(b->stack);
+	a->max = ft_max(a->stack);
+	b->max = ft_max(b->stack);
+	// if (a->first == a->max)
+	// 	a->max = ft_max(a->stack);
+	// if (a->first == a->min)
+	// 	a->min = ft_min(a->stack);
+	// if (b->first >= b->max)
+	// 	b->max = b->first;
+	// if (b->first <= b->min)
+	// 	b->min = b->first;
 	write (1, "p", 1);
 	write (1, &x, 1);
 	write (1, "\n", 1);
@@ -99,40 +104,15 @@ void	ft_push(t_stack *a, t_stack *b, char x)
 
 void	ft_push_back(t_stack *a, t_stack *b)
 {
+	printf ("push back \n");
 	int	i;
 
-	i = 0;
-	while (i < b->len + 1)
+	i = b->len;
+	printf ("len = [%d]\n", b->len);
+	while (i > 0)
 	{
+		printf ("b->len while pushback [%d]\n", b->len);
 		ft_push(b, a, 'a');
-		i++;
+		i--;
 	}
 }
-// void display(int *tab, int len)
-// {
-//    int i = -1;
-//    while (++i < len)
-//       printf("[%d] ", tab[i]);
-//    printf("\n");
-// }
-// int main(void)
-// {
-//    t_stack a;
-//    t_stack b;
-
-//    a.stack = malloc(sizeof(int) * 3);
-//    a.stack[0] = 1;
-//    a.stack[1] = 3;
-//    a.stack[2] = 2;
-//    a.len = 3;
-//    b.stack = malloc(sizeof(int) * 3);
-//    b.len = 0;
-// //    b.stack[0] = 13;
-// //    b.stack[1] = 51;
-// //    b.stack[2] = 7;
-//    display(a.stack, a.len);
-//    display(b.stack, b.len);
-//    ft_push(&a, &b);
-//    display(a.stack, a.len);
-//    display(b.stack, b.len);
-// }

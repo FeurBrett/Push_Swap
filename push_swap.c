@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:07:00 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/13 18:43:32 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:31:48 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,24 @@ int	ft_algo(t_stack *a, int i)
 		if_three(a);
 	else
 	{
+		int i = -1;
+		printf ("stacks before pb pb\na\n");
+		while (i++ < a->len - 1)
+			printf("[%d]", a->stack[i]);
+		i = -1;
+		printf("\nb\n");
+		while (i++ < b->len - 1)
+			printf("[%d]", b->stack[i]);
 		ft_push(a, b, 'b');
 		ft_push(a, b, 'b');
-		write (1, "starting algorithm \n", 20);
+		i = -1;
+		printf ("stacks after pb pb\na\n");
+		while (i++ < a->len - 1)
+			printf("[%d]", a->stack[i]);
+		i = -1;
+		printf("\nb\n");
+		while (i++ < b->len - 1)
+			printf("[%d]", b->stack[i]);
 		ft_more(a, b, d);
 	}
 	return (0);

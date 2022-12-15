@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:56:20 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/13 18:51:00 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:47:18 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,29 @@ void	ft_more(t_stack *a, t_stack *b, t_var *d)
 	d->j = 0;
 	d->rrb = 1;
 	d->rra = 1;
-	while (ft_check_order(a) != 1)
+	while (ft_check_order(a) != 1 || a->len > 3)
 	{
-		if (a->len == 3)
-			if_three(a);
 		ft_nb_move(a, b, d, 0);
-		printf("check order = [%d]\n", ft_check_order(a));
 		ft_move(a, b, d);
 	}
+	if (a->len == 3)
+		if_three(a);
+	int i = 0;
+	printf ("b stack before push back\n");
+	while (b->stack[i])
+	{
+		printf("[%d]", b->stack[i]);
+		i++;
+	}
 	ft_push_back(a, b);
+	i = 0;
+	printf ("b stack after push back\n");
+	while (b->stack[i])
+	{
+		printf("[%d]", b->stack[i]);
+		i++;
+	}
+	printf("\nlen b after pushback [%d]\n", b->len);
 }
 
 int	ft_check_order(t_stack	*a)
