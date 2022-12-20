@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:56:20 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/15 15:47:18 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:36:25 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ void	ft_more(t_stack *a, t_stack *b, t_var *d)
 		ft_move(a, b, d);
 	}
 	if (a->len == 3)
+	{
+		printf("launching if three, stack before : %d, %d, %d \n", a->stack[0], a->stack[1], a->stack[2]);
 		if_three(a);
+		printf("stack after if three : %d, %d, %d \n", a->stack[0], a->stack[1], a->stack[2]);
+	}
 	int i = 0;
 	printf ("b stack before push back\n");
 	while (b->stack[i])

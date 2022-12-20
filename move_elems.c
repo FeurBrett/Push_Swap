@@ -70,7 +70,7 @@ void	ft_move_rra(t_stack *a, t_stack *b, t_var *d)
 
 void	ft_global_move(t_stack *a, t_stack *b, t_var *d)
 {
-	if (d->rra == 1)
+	if (d->rra == 1 && d->rrb == 0)
 	{
 		while (d->nb_ri-- >= 0)
 		{

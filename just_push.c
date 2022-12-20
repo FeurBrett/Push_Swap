@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:40:49 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/15 15:36:58 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:03:46 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,20 @@ void	ft_push_back(t_stack *a, t_stack *b)
 	printf ("len = [%d]\n", b->len);
 	while (i > 0)
 	{
-		printf ("b->len while pushback [%d]\n", b->len);
-		ft_push(b, a, 'a');
+		if (b->stack[0] < a->stack[0] && a->stack[0] == a->min)
+		{
+			ft_push(b, a, 'a');
+			i--;
+		}
+		else
+			ft_rotate(a);
 		i--;
 	}
 }
+
+// avant de push back faut voir les placements de b->stack par rapport a a->stack
+// si tous les elems de a sont tries et plus grands que b->max, push back
+// sinon, si b->stack[0] est plus petit que a->min et a->[0] est a->min, push
+// sinon si a->[0] est plus petit que b->[0] mais b->[0] est plus petit que a->max, rotate jusqu'a ce que b->0 soit entre a->first et a->last ?
+// si b-[0] est plus grand que a->max push(a) && rotate
+//
