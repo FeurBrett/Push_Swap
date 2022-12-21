@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:20:27 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/05 14:13:21 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:28:30 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_isminus(int a)
 		return (1);
 }
 
-int ft_len_array(char **tab)
+int	ft_len_array(char **tab)
 {
 	int	i;
 

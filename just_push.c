@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:40:49 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/21 12:20:49 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:29:25 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,15 @@ void	ft_push_back(t_stack *a, t_stack *b)
 	printf ("len = [%d]\n", b->len);
 	while (i > 0)
 	{
+		if (!b->stack[0])
+			exit(EXIT_SUCCESS);
 		if (b->stack[0] < a->stack[0] && a->stack[0] == a->min)
 		{
 			while (b->len >= 1)
 				ft_push(b, a, 'a');
 			i--;
 		}
-		else if ()
+		else
 			ft_rotate(a);
 		i--;
 	}
