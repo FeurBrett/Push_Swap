@@ -6,7 +6,7 @@
 /*   By: apirovan <apirovan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:40:49 by apirovan          #+#    #+#             */
-/*   Updated: 2022/12/20 17:03:46 by apirovan         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:20:49 by apirovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,11 @@ void	ft_push_back(t_stack *a, t_stack *b)
 	{
 		if (b->stack[0] < a->stack[0] && a->stack[0] == a->min)
 		{
-			ft_push(b, a, 'a');
+			while (b->len >= 1)
+				ft_push(b, a, 'a');
 			i--;
 		}
-		else
+		else if ()
 			ft_rotate(a);
 		i--;
 	}
@@ -127,4 +128,4 @@ void	ft_push_back(t_stack *a, t_stack *b)
 // sinon, si b->stack[0] est plus petit que a->min et a->[0] est a->min, push
 // sinon si a->[0] est plus petit que b->[0] mais b->[0] est plus petit que a->max, rotate jusqu'a ce que b->0 soit entre a->first et a->last ?
 // si b-[0] est plus grand que a->max push(a) && rotate
-//
+// si y a un a->0 est entre 2 elems de b, rotate jusqu'a ce que le plus petit soit b->last
